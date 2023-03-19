@@ -15,7 +15,6 @@ public class Mapper {
     }
 
     public AuthDTO userToDTO(User user){
-        AuthDTO dto = new AuthDTO(user.getEmail(), user.getName());
-        return dto;
+        return new AuthDTO(user.getEmail(), user.getName());
     }
 }
