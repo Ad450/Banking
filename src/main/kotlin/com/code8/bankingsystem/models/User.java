@@ -1,12 +1,14 @@
 package com.code8.bankingsystem.models;
 
 import lombok.*;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+
+import java.util.Date;
 
 @Document
 @NoArgsConstructor
@@ -21,7 +23,9 @@ public class User {
     private String email;
     private String name;
     @CreatedDate
-    private DateTime createdAt;
+    private Date createdAt;
     @LastModifiedDate
-    private DateTime updatedAt;
+    private Date updatedAt;
+    @DocumentReference
+    private Account account;
 }

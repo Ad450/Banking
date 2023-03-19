@@ -1,39 +1,31 @@
 package com.code8.bankingsystem.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-import org.springframework.web.service.annotation.DeleteExchange;
+import org.springframework.data.mongodb.core.mapping.*;
+
+import java.util.Date;
 
 @Document
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Setter
+@Getter
 public class Account {
-    @Id
+    @MongoId(FieldType.OBJECT_ID)
     private String accountId;
     @DocumentReference
     private User user;
-    private Integer balance;
+    @Field(targetType = FieldType.STRING)
     private AccountType accountType;
+    private Integer balance;
     @CreatedDate
-    private DateTime createdAt;
+    private Date createdAt;
     @LastModifiedDate
-    private DateTime updatedAt;
+    private Date updatedAt;
 
 }
 
 
-//- accountId
-//        - userId
-//        - account type
-//        - balance
-//        - createdAt
-//        - updatedAt
-//        - deletedAt
